@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tour Trung Quốc VIP – Hồng Kông, Bắc Kinh, Thượng Hải, Trương Gia Giới, Tây Tạng. Tiết kiệm đến 4.100.000đ. Vietkite Travel – 15 năm kinh nghiệm.">
 <title>Tour Trung Quốc VIP – Vietkite Travel</title>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<!-- Preconnect to external origins -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Preload hero image (LCP) -->
+<link rel="preload" as="image" href="https://cdn3.ivivu.com/2024/04/du-lich-Bac-Kinh-ivivu-1.jpg" fetchpriority="high">
+<!-- Preload logo (above fold) -->
+<link rel="preload" as="image" href="https://vietkite.com.vn/wp-content/uploads/2024/12/logo-cty-canh-dieu-viet-vietkite.jpg">
+<!-- Font with display=swap to avoid FOIT -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    RESET & BASE
@@ -17,7 +26,7 @@
   --radius:16px;--shadow:0 8px 32px rgba(0,0,0,.14);
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:"Be Vietnam Pro",sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;line-height:1.6}
+body{font-family:"Be Vietnam Pro",sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;line-height:1.6;font-display:swap}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 
@@ -70,6 +79,7 @@ nav{
 .hero-bg{
   position:absolute;inset:0;
   background:url("https://cdn3.ivivu.com/2024/04/du-lich-Bac-Kinh-ivivu-1.jpg") center/cover no-repeat;
+  will-change:transform;
 }
 .hero-bg::after{
   content:"";position:absolute;inset:0;
@@ -150,6 +160,8 @@ nav{
    SECTION COMMONS
 ============================================================ */
 section{padding:clamp(56px,8vw,100px) clamp(16px,5vw,60px)}
+/* content-visibility: skip rendering of off-screen sections */
+.tours,.gallery-sec,.urgency,.booking,#customers{content-visibility:auto;contain-intrinsic-size:0 600px}
 .sec-label{display:inline-block;color:var(--red);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:1.8px;margin-bottom:10px}
 .sec-title{font-family:"Playfair Display",serif;font-size:clamp(26px,4vw,46px);font-weight:700;color:var(--ink);margin-bottom:14px;line-height:1.2}
 .sec-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.75}
@@ -168,6 +180,7 @@ section{padding:clamp(56px,8vw,100px) clamp(16px,5vw,60px)}
   border-radius:20px;overflow:hidden;
   box-shadow:0 6px 40px rgba(0,0,0,.1);
   background:#fff;transition:transform .3s,box-shadow .3s;
+  will-change:transform;
 }
 .tour-card:hover{transform:translateY(-4px);box-shadow:0 16px 60px rgba(0,0,0,.14)}
 .tour-card.reverse{direction:rtl}
@@ -181,6 +194,7 @@ section{padding:clamp(56px,8vw,100px) clamp(16px,5vw,60px)}
   position:absolute;inset:0;
   width:100%;height:100%;object-fit:cover;
   transition:transform .5s ease;display:block;
+  will-change:transform;
 }
 .tour-card:hover .tour-main-img{transform:scale(1.05)}
 .tour-img-thumbs{
@@ -538,7 +552,7 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
 ============================================================ -->
 <nav id="mainNav">
   <a href="#home" class="nav-logo">
-    <img src="https://vietkite.com.vn/wp-content/uploads/2024/12/logo-cty-canh-dieu-viet-vietkite.jpg" alt="VietKite Travel">
+    <img src="https://vietkite.com.vn/wp-content/uploads/2024/12/logo-cty-canh-dieu-viet-vietkite.jpg" alt="VietKite Travel" width="140" height="50" fetchpriority="high">
   </a>
   <ul class="nav-links">
     <li><a href="#tours">Các Tuyến Tour</a></li>
@@ -627,18 +641,19 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
              src="https://www.agoda.com/wp-content/uploads/2024/10/shenzhen-china_1200x800.jpg"
              width="1200" height="800"
              alt="Hồng Kông – Thẩm Quyến"
+             loading="lazy" decoding="async"
              onerror="this.style.background='linear-gradient(135deg,#1a0f0a,#3d1a0a)';this.alt='[Ảnh Hồng Kông – Thẩm Quyến]'">
         <!-- 📸 THUMBNAIL GALLERY TUYẾN 1 (tùy chọn – xóa nếu không cần) -->
         <div class="tour-img-thumbs">
-          <img class="tour-thumb"             src="https://upload.wikimedia.org/wikipedia/commons/1/13/Tian_Tan_Buddha_by_Beria.jpg" alt="Tượng Phật Thiên Đàn (Tian Tan Buddha)1 width="1200" height="800" " onclick="swapImg(this)">
+          <img class="tour-thumb"             src="https://upload.wikimedia.org/wikipedia/commons/1/13/Tian_Tan_Buddha_by_Beria.jpg" alt="Tượng Phật Thiên Đàn (Tian Tan Buddha)1 width="1200" height="800" " onclick="swapImg(this)" loading="lazy" decoding="async">
           <img class="tour-thumb"
                src="https://thaiantravel.com/wp-content/uploads/2025/02/Thap-Quang-Chau6.webp"
-               alt="Canton Tower" onclick="swapImg(this)">
+               alt="Canton Tower" onclick="swapImg(this)" loading="lazy" decoding="async">
           <img class="tour-thumb"              src="https://kenh14cdn.com/2018/6/9/photo-1-1528553295700291849416.jpg"
-               alt="Xe điện 2 tầng" onclick="swapImg(this)">
+               alt="Xe điện 2 tầng" onclick="swapImg(this)" loading="lazy" decoding="async">
           <img class="tour-thumb"
                src="https://innotour.vn/image/catalog/blog-du-lich/hong-kong/pics/temple-street-hong-kong.jpg"
-               alt="Đường phố HongKong" onclick="swapImg(this)">
+               alt="Đường phố HongKong" onclick="swapImg(this)" loading="lazy" decoding="async">
         </div>
         <div class="tour-badge-hot">🔥 Siêu Hot</div>
       </div>
@@ -678,15 +693,16 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
              src="https://apollotourist.vn/wp-content/uploads/2024/10/Bac-Kinh-Trung-Quoc.jpg"
              width="1200" height="800"
              alt="Bắc Kinh – Thượng Hải – Hàng Châu – Ô Trấn"
+             loading="lazy" decoding="async"
              onerror="this.style.background='linear-gradient(135deg,#0a1a2e,#1a3a5e)';this.alt='[Ảnh Vạn Lý Trường Thành]'">
         <div class="tour-img-thumbs">
           <!-- 📸 THUMBNAILS TUYẾN 2 -->
-          <img class="tour-thumb" src="https://vj-prod-website-cms.s3.ap-southeast-1.amazonaws.com/depositphotos63330705xl-1719201121689.jpg" alt="Tử Cấm Thành" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://images2.thanhnien.vn/528068263637045248/2023/12/7/a1-17019461240531747351528.jpg" alt="Thượng Hải" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://pystravel.vn/_next/image?url=https%3A%2F%2Fbooking.pystravel.vn%2Fuploads%2Fposts%2Falbums%2F17094%2F88905fbe73fb0e76f299af726d75f220.jpg&w=1920&q=75 alt="Hàng Châu – Ô Trấn" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://kimlientravel.com.vn/upload/image/image-20230518111159-7.png" alt="Vạn Lý Trường Thành" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://duhocquoctea2z.edu.vn/wp-content/uploads/2022/10/dia-hoc-ngoai-ngu-so-2-bac-kinh-6.jpg" alt="Bắc Kinh 2" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://datviettour.com.vn/uploads/images/chau-a/trung-quoc/hinh-danh-thang/kham-pha-ben-thuong-hai-2.jpg" alt="Thượng Hải 2" onclick="swapImg(this)">
+          <img class="tour-thumb" src="https://vj-prod-website-cms.s3.ap-southeast-1.amazonaws.com/depositphotos63330705xl-1719201121689.jpg" alt="Tử Cấm Thành" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://images2.thanhnien.vn/528068263637045248/2023/12/7/a1-17019461240531747351528.jpg" alt="Thượng Hải" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://pystravel.vn/_next/image?url=https%3A%2F%2Fbooking.pystravel.vn%2Fuploads%2Fposts%2Falbums%2F17094%2F88905fbe73fb0e76f299af726d75f220.jpg&w=1920&q=75 alt="Hàng Châu – Ô Trấn" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://kimlientravel.com.vn/upload/image/image-20230518111159-7.png" alt="Vạn Lý Trường Thành" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://duhocquoctea2z.edu.vn/wp-content/uploads/2022/10/dia-hoc-ngoai-ngu-so-2-bac-kinh-6.jpg" alt="Bắc Kinh 2" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://datviettour.com.vn/uploads/images/chau-a/trung-quoc/hinh-danh-thang/kham-pha-ben-thuong-hai-2.jpg" alt="Thượng Hải 2" onclick="swapImg(this)" loading="lazy" decoding="async">
         </div>
         <div class="tour-badge-hot" style="background:var(--gold);color:#3d2800">⭐ Bestseller</div>
       </div>
@@ -724,13 +740,14 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
              src="https://alluviacityvangiang.com.vn/wp-content/uploads/the-gateway-city-an-thi-1.jpg"
              width="1200" height="800"
              alt="Ân Thi – Trương Gia Giới"
+             loading="lazy" decoding="async"
              onerror="this.style.background='linear-gradient(135deg,#0d1f13,#1a4a2a)';this.alt='[Ảnh Trương Gia Giới]'">
         <div class="tour-img-thumbs">
           <!-- 📸 THUMBNAILS TUYẾN 3 -->
-          <img class="tour-thumb" src="https://booking.dulichthiennhien.vn/Data/image/H%C3%8CNH%20WEB/TGG-PHCT/%C4%90%E1%BA%A0I%20HI%E1%BB%86P%20C%E1%BB%90C.jpeg" alt="Cầu kính" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://ik.imagekit.io/tvlk/blog/2023/04/go-and-share-du-lich-phuong-hoang-co-tran-1.jpg" alt="Phượng Hoàng Cổ Trấn" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://objectstorage.omzcloud.vn/pys-object-storage/web/uploads/posts/avatar/1673239723.jpg" alt="Trương Gia Giới" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://tinhthanhvn.com/_next/image?url=%2Fimages%2Fbanner%2Fprovinces%2Fhung-yen.jpg&w=1920&q=75" alt="Ân Thi" onclick="swapImg(this)">
+          <img class="tour-thumb" src="https://booking.dulichthiennhien.vn/Data/image/H%C3%8CNH%20WEB/TGG-PHCT/%C4%90%E1%BA%A0I%20HI%E1%BB%86P%20C%E1%BB%90C.jpeg" alt="Cầu kính" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://ik.imagekit.io/tvlk/blog/2023/04/go-and-share-du-lich-phuong-hoang-co-tran-1.jpg" alt="Phượng Hoàng Cổ Trấn" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://objectstorage.omzcloud.vn/pys-object-storage/web/uploads/posts/avatar/1673239723.jpg" alt="Trương Gia Giới" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://tinhthanhvn.com/_next/image?url=%2Fimages%2Fbanner%2Fprovinces%2Fhung-yen.jpg&w=1920&q=75" alt="Ân Thi" onclick="swapImg(this)" loading="lazy" decoding="async">
         </div>
         <div class="tour-badge-hot" style="background:#4a90d9">🎬 Đất Avatar</div>
       </div>
@@ -769,14 +786,15 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
              src="https://trieuhaotravel.vn/Uploads/files/T%C3%A2y%20Giang%20Thi%C3%AAn%20H%E1%BB%99%20Mi%C3%AAu%20Tr%E1%BA%A1i_1.jpg"
              width="1200" height="800"
              alt="Quý Châu – Tây Giang – Thiên Hộ Miêu Trại"
+             loading="lazy" decoding="async"
              onerror="this.src='ANH_TUYEN4_CHINH_DU_PHONG.jpg'">
         <div class="tour-img-thumbs">
           <!-- 📸 THUMBNAILS TUYẾN 4 -->
-          <img class="tour-thumb" src="https://thuanphongtravel.vn/wp-content/uploads/2026/03/tay-giang-thien-ho-mieu-trai-1.jpg" alt="Quý Châu 1" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://thaiantravel.com/wp-content/uploads/2024/06/1-mieu-trai-tay-giang-thaiantravel-4-1.jpg" alt="Tây Giang" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://hnm.1cdn.vn/2023/12/18/9.jpg" alt="Tây Giang 2" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://hanvinatravel.vn/uploads/images/show-tay-giang-tuoi-dep-3.jpg" alt="Tây Giang 4" onclick="swapImg(this)">
-          <img class="tour-thumb" src="https://dulichphuonghoang.vn/upload/images/2-1557615418.jpg" alt="Tây Giang 5" onclick="swapImg(this)">
+          <img class="tour-thumb" src="https://thuanphongtravel.vn/wp-content/uploads/2026/03/tay-giang-thien-ho-mieu-trai-1.jpg" alt="Quý Châu 1" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://thaiantravel.com/wp-content/uploads/2024/06/1-mieu-trai-tay-giang-thaiantravel-4-1.jpg" alt="Tây Giang" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://hnm.1cdn.vn/2023/12/18/9.jpg" alt="Tây Giang 2" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://hanvinatravel.vn/uploads/images/show-tay-giang-tuoi-dep-3.jpg" alt="Tây Giang 4" onclick="swapImg(this)" loading="lazy" decoding="async">
+          <img class="tour-thumb" src="https://dulichphuonghoang.vn/upload/images/2-1557615418.jpg" alt="Tây Giang 5" onclick="swapImg(this)" loading="lazy" decoding="async">
         </div>
         <div class="tour-badge-hot" style="background:#8b5cf6">📸 Triệu Like</div>
       </div>
@@ -816,6 +834,7 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
      width="1200" height="800"
      alt="Tây Tạng huyền bí"
      style="height:100%;min-height:420px"
+     loading="lazy" decoding="async"
      onerror="this.src='ANH_TUYEN5_CHINH_DU_PHONG.jpg'">
         </div>
         <div class="tay-tang-body">
@@ -840,19 +859,19 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
 <div class="tt-thumbs" style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap">
   <img src="https://thaiantravel.com/wp-content/uploads/2025/04/chua-Dai-Chieu22.webp" alt="Chùa Đại Chiêu"
        style="width:80px;height:56px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2);cursor:pointer"
-       onclick="swapTayTang(this)">
+       onclick="swapTayTang(this)" loading="lazy" decoding="async">
   <img src="https://thaiantravel.com/wp-content/uploads/2025/03/Pho-Barkhor-11.webp" alt="Phố Barkhor"
        style="width:80px;height:56px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2);cursor:pointer"
-       onclick="swapTayTang(this)">
+       onclick="swapTayTang(this)" loading="lazy" decoding="async">
   <img src="https://thaiantravel.com/wp-content/uploads/2025/03/Ho-Yamdrok-20.webp" alt="Hồ Yamdrok"
        style="width:80px;height:56px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2);cursor:pointer"
-       onclick="swapTayTang(this)">
+       onclick="swapTayTang(this)" loading="lazy" decoding="async">
   <img src="https://toongadventure.vn/wp-content/uploads/2021/06/photo-1544735716-ea9ef790f501.jpeg" alt="Tây Tạng"
        style="width:80px;height:56px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2);cursor:pointer"
-       onclick="swapTayTang(this)">
+       onclick="swapTayTang(this)" loading="lazy" decoding="async">
   <img src="https://dulichcoguu.com/wp-content/uploads/2023/07/kien-truc-mot-dien-tho-tu-vien-Tashilhunpo-bhutan.jpg" alt="Tu viện Tashilhunpo"
        style="width:80px;height:56px;object-fit:cover;border-radius:8px;border:2px solid rgba(255,255,255,.2);cursor:pointer"
-       onclick="swapTayTang(this)">
+       onclick="swapTayTang(this)" loading="lazy" decoding="async">
 </div>
           </div>
           <div>
@@ -888,32 +907,32 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
     <!-- 📸 G1 – Ảnh TO NHẤT (chiếm 2 hàng bên trái) -->
     <!-- Gợi ý: ảnh đẹp nhất, có chiều sâu, dọc hoặc panorama -->
     <div class="g-item g1">
-      <img src="https://dulichminhanh.com.vn/wp-content/uploads/2023/08/van-ly-truong-thanh.jpg" alt="Vạn Lý Trường Thành">
+      <img src="https://dulichminhanh.com.vn/wp-content/uploads/2023/08/van-ly-truong-thanh.jpg" alt="Vạn Lý Trường Thành" loading="lazy" decoding="async">
       <div class="g-caption">Vạn Lý Trường Thành – Bắc Kinh</div>
     </div>
     <!-- 📸 G2 – Hàng trên, ô thứ 2 -->
     <div class="g-item g2">
-      <img src="https://cattour.vn/images/upload/images/Tay-Tang/ho-yam-drok-tay-tang/hoyamdroktaytang12.jpg" alt="Tây Tạng">
+      <img src="https://cattour.vn/images/upload/images/Tay-Tang/ho-yam-drok-tay-tang/hoyamdroktaytang12.jpg" alt="Tây Tạng" loading="lazy" decoding="async">
       <div class="g-caption">Hồ thiêng Tây Tạng</div>
     </div>
     <!-- 📸 G3 – Hàng trên, ô thứ 3 -->
     <div class="g-item g3">
-      <img src="https://bazantravel.com/cdn/medias/uploads/51/51140-truong-gia-gioi.jpg" alt="Trương Gia Giới">
+      <img src="https://bazantravel.com/cdn/medias/uploads/51/51140-truong-gia-gioi.jpg" alt="Trương Gia Giới" loading="lazy" decoding="async">
       <div class="g-caption">Trương Gia Giới – "Đất Avatar"</div>
     </div>
     <!-- 📸 G4 – Hàng dưới, ô thứ 2 -->
     <div class="g-item g4">
-      <img src="https://hnm.1cdn.vn/2023/12/18/4(2).jpg" alt="Thiên Hộ Miêu Trại">
+      <img src="https://hnm.1cdn.vn/2023/12/18/4(2).jpg" alt="Thiên Hộ Miêu Trại" loading="lazy" decoding="async">
       <div class="g-caption">Thiên Hộ Miêu Trại – Quý Châu</div>
     </div>
     <!-- 📸 G5 – Hàng dưới, ô thứ 3 -->
     <div class="g-item g5">
-      <img src="https://trieuhaotravel.vn/Uploads/files/download%20(55)_23.png" alt="Tượng Phật Thiên Đàn">
+      <img src="https://trieuhaotravel.vn/Uploads/files/download%20(55)_23.png" alt="Tượng Phật Thiên Đàn" loading="lazy" decoding="async">
       <div class="g-caption">Tượng Phật Thiên Đàn – Hồng Kông</div>
     </div>
     <!-- 📸 G6 – Hàng dưới, ô cuối -->
     <div class="g-item g6">
-      <img src="https://vj-prod-website-cms.s3.ap-southeast-1.amazonaws.com/depositphotos205302508xl-1713497422103.jpg" alt="Hàng Châu – Ô Trấn">
+      <img src="https://vj-prod-website-cms.s3.ap-southeast-1.amazonaws.com/depositphotos205302508xl-1713497422103.jpg" alt="Hàng Châu – Ô Trấn" loading="lazy" decoding="async">
       <div class="g-caption">Ô Trấn cổ kính</div>
     </div>
   </div>
@@ -967,16 +986,16 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
   <!-- 📸 HÌNH ĐOÀN KHÁCH: Thêm/bớt ảnh tùy số lượng có -->
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
     <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3">
-      <img src="https://i.ibb.co/1YQX49LW/14.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://i.ibb.co/1YQX49LW/14.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
     </div>
     <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3">
-      <img src="https://i.ibb.co/LKGVKyW/4.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://i.ibb.co/LKGVKyW/4.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
     </div>
     <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3">
-      <img src="https://i.ibb.co/GfC6c02D/15.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://i.ibb.co/GfC6c02D/15.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
     </div>
     <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3">
-      <img src="https://i.ibb.co/21n5Zwq4/11.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      <img src="https://i.ibb.co/21n5Zwq4/11.jpg" alt="Đoàn khách VietKite" style="width:100%;height:100%;object-fit:cover;transition:transform .4s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -1080,7 +1099,7 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
 <footer>
   <div class="ft-grid">
     <div class="ft-brand">
-      <img src="https://vietkite.com.vn/wp-content/uploads/2024/12/logo-cty-canh-dieu-viet-vietkite.jpg" alt="logo">
+      <img src="https://vietkite.com.vn/wp-content/uploads/2024/12/logo-cty-canh-dieu-viet-vietkite.jpg" alt="logo" loading="lazy" decoding="async">
       <p>VietKite Travel – Chuyên tổ chức tour du lịch quốc tế chuyên nghiệp, uy tín hơn 15 năm. Hành trình của bạn, niềm vui của chúng tôi.</p>
       <div class="socials">
         <a href="https://www.facebook.com/vietkite" title="Facebook">f</a>
@@ -1152,7 +1171,7 @@ footer{background:var(--dark-bg);color:rgba(255,255,255,.75);padding:56px clamp(
   <button class="lightbox-close" onclick="lbClose()" title="Đóng">✕</button>
   <button class="lightbox-nav lightbox-prev" onclick="lbNav(-1)" title="Ảnh trước">‹</button>
   <div class="lightbox-inner">
-    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <img class="lightbox-img" id="lbImg" src="" alt="" loading="lazy" decoding="async">
     <div class="lightbox-caption" id="lbCaption"></div>
   </div>
   <button class="lightbox-nav lightbox-next" onclick="lbNav(1)" title="Ảnh tiếp">›</button>
@@ -1168,7 +1187,7 @@ document.addEventListener("click",function(e){
 });
 window.addEventListener("scroll",function(){
   document.getElementById("mainNav").style.boxShadow=window.scrollY>40?"0 4px 24px rgba(0,0,0,.1)":"none";
-});
+},{passive:true});
 
 /* ── SMOOTH SCROLL ── */
 function scrollToTarget(target){
